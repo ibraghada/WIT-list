@@ -8,7 +8,7 @@
     "pretest": "node src/server/database/dbBuild.js",
     "start": "node ./src/server/server.js",
     "watch": "nodemon ./src/server/server.js",
-    "heroku-postbuild": "webpack -p --config webpack.confitog.js --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
     "dev:build": "webpack",
     "dev:build:watch": "webpack --watch",
     "dev:start": "node --exec babel-node ./src/server/server.js",
