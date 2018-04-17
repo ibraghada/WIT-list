@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import 'material-components-web/dist/material-components-web.css';
 
-import HomePage from './HomePage';
+import './app.css';
+import Header from './header';
 
 class App extends Component {
   render() {
@@ -9,7 +11,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <Route exact path='/home' component={HomePage} />
+            <Route exact path='/home' component={Header} />
           </Switch>
         </div>
       </BrowserRouter>
