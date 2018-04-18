@@ -1,0 +1,125 @@
+.form{
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__content{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+}
+
+.form__submit{
+ background-color: #050407;
+ border: none;
+ color: white;
+ width: 160px;
+ height: 60px;
+ font-size: 16px;
+}
+
+.form__submit__div{
+  display: flex;
+  justify-content: center;
+}
+
+.form__logo{
+  display: flex;
+  min-height: 68px;
+  align-self: flex-start;
+  min-width: 123px;
+  padding-left: 1.2vw;
+  background-image: url(/assets/imgs/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.form__container{
+  width: 60vw;
+  align-self: center;
+  margin-top: 15vh;
+}
+
+.form__title{
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 6vw;
+  text-align: right;
+  letter-spacing: 0.05em;
+  font-family: inherit;
+  color: rgba(5, 4, 7, 0.8);
+}
+
+.form__input{
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+  margin-top: 6vh;
+  height: 4vh;
+  padding-left: 15px;
+}
+
+.form__input:focus{
+  border-bottom: 1px solid rgba(250, 59, 40, 0.6);
+}
+
+.form__question{
+  display: flex;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: inherit;
+  font-size: 1.6vw;
+  margin-bottom: 10vh;
+}
+
+.form__textarea{
+  height: 10vh;
+  resize: none;
+}
+
+.form__select{
+  display: block;
+  margin: 30px 0;
+  padding: 10px 50px 10px 10px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.85);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
+.form__select:focus{
+  border-bottom: 1px solid rgba(250, 59, 40, 0.6);
+}
+
+.form__select option {
+  color: rgba(0, 0, 0, 0.85);
+  border: none;
+  outline: none
+}
+
+@media only screen and (max-width: 600px) {
+  .form__question{
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.85);
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3vw;
+  }
+  .form__container{
+    margin-top: 10vh;
+  }
+  .form__input{
+    margin-top: 3vh;
+  }
+
+  .form__logo{
+    align-self: center;
+  }
+}
