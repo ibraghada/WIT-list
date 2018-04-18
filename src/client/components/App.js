@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import 'material-components-web/dist/material-components-web.css';
+
+import HomePage from './homePage';
+import Form from './submitOrg';
 
 import './app.css';
-import Header from './header';
-import Form from './form';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <Route exact path='/home' component={Header} />
+            <Route exact path='/' component={HomePage} />
             <Route exact path='/registration' component={Form} />
           </Switch>
         </div>
