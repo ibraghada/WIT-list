@@ -1,7 +1,10 @@
+// HARD CODED
+
 import React, { Component } from 'react';
 
-import './index.css';
 import typeWriter from '../../helpers/typeWriter';
+
+import './index.css';
 
 class Header extends Component {
   componentDidMount() {
@@ -17,7 +20,7 @@ class Header extends Component {
             <button type='button'>Submit Your Organization</button>
           </div>
         </div>
-        <div className='container'>
+        <div className='header__container'>
           <div className='header__content'>
             <p className='header__content__paragraph ml12'>SO LONG AS WOMEN NOT FREE
               THE PEOPLE ARE NOT FREE</p>
