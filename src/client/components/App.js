@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HomePage from './homePage';
-import Form from './submitOrg';
+import Form from './form';
 
 import './app.css';
 
