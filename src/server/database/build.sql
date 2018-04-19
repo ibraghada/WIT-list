@@ -1,8 +1,8 @@
 BEGIN;
 
-DROP TABLE IF EXISTS categories, sub_cats, orgs, orgs_cats CASCADE;
+DROP TABLE IF EXISTS cats, sub_cats, orgs, orgs_sub_cats CASCADE;
 
-CREATE TABLE categories (
+CREATE TABLE cats (
   id SERIAL PRIMARY KEY,
   title VARCHAR NOT NULL
 );
@@ -10,8 +10,7 @@ CREATE TABLE categories (
 CREATE TABLE sub_cats (
   id SERIAL PRIMARY KEY,
   title VARCHAR NOT NULL,
-  parent_cat INTEGER NOT NULL,
-  parent_sub_cat INTEGER
+  parent_cat INTEGER REFERENCES cats(id) NOT NULL
 );
 
 CREATE TABLE orgs (
@@ -22,13 +21,13 @@ CREATE TABLE orgs (
   operating VARCHAR NOT NULL,
   country VARCHAR NOT NULL,
   city VARCHAR NOT NULL,
+  cat INTEGER REFERENCES cats(id) NOT NULL,
   comments VARCHAR
 );
 
-CREATE TABLE orgs_cats (
+CREATE TABLE orgs_sub_cats (
   id SERIAL PRIMARY KEY,
-  org_id INTEGER REFERENCES orgs(id) NOT NULL,
-  cat_id INTEGER REFERENCES categories(id) NOT NULL,
+  org_id INTEGER REFERENCES orgs(id),
   sub_cat_id INTEGER REFERENCES sub_cats(id) NOT NULL
 );
 
