@@ -1,3 +1,7 @@
+body{
+    background-color: rgba(241, 233, 225, .4);
+}
+
 .form{
   margin-top: 3vh;
   display: flex;
@@ -12,12 +16,13 @@
 }
 
 .form__submit{
- background-color: #050407;
+ background-color: rgba(5, 4, 7, 0.9);
  border: none;
  color: white;
- width: 160px;
- height: 60px;
- font-size: 16px;
+ width: 120px;
+ height: 45px;
+ font-size: 17px;
+ font-family: inherit;
 }
 
 .form__submit__div{
@@ -56,10 +61,11 @@
 
 .form__input{
   border: none;
+  background-color: inherit;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   outline: none;
-  margin-top: 6vh;
-  height: 4vh;
+  margin-top: 2vh;
+  height: 8vh;
   padding-left: 15px;
 }
 
@@ -79,13 +85,14 @@
 .form__textarea{
   height: 10vh;
   resize: none;
+  outline: none;
 }
 
 .form__select{
   display: block;
   margin: 30px 0;
   padding: 10px 50px 10px 10px;
-  background-color: white;
+  background-color: inherit;
   color: rgba(0, 0, 0, 0.85);
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -116,7 +123,7 @@
     margin-top: 10vh;
   }
   .form__input{
-    margin-top: 3vh;
+    margin-top: 1vh;
   }
 
   .form__logo{
