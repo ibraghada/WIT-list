@@ -2,20 +2,20 @@ body{
     background-color: rgba(241, 233, 225, .4);
 }
 
-.form{
+.submitOrg{
   margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.form__content{
+.submitOrg__content{
   display: flex;
   flex-direction: column;
   margin-bottom: 3vh;
 }
 
-.form__submit{
+.submitOrg__submit{
  background-color: rgba(5, 4, 7, 0.9);
  border: none;
  color: white;
@@ -23,14 +23,15 @@ body{
  height: 45px;
  font-size: 17px;
  font-family: inherit;
+ cursor: pointer;
 }
 
-.form__submit__div{
+.submitOrg__submit__div{
   display: flex;
   justify-content: center;
 }
 
-.form__logo{
+.submitOrg__logo{
   display: flex;
   min-height: 68px;
   align-self: flex-start;
@@ -42,13 +43,13 @@ body{
   background-position: center;
 }
 
-.form__container{
+.submitOrg__container{
   width: 60vw;
   align-self: center;
   margin-top: 15vh;
 }
 
-.form__title{
+.submitOrg__title{
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -59,7 +60,7 @@ body{
   color: rgba(5, 4, 7, 0.8);
 }
 
-.form__input{
+.submitOrg__input{
   border: none;
   background-color: inherit;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -69,11 +70,11 @@ body{
   padding-left: 15px;
 }
 
-.form__input:focus{
+.submitOrg__input:focus{
   border-bottom: 1px solid rgba(250, 59, 40, 0.6);
 }
 
-.form__question{
+.submitOrg__question{
   display: flex;
   flex-direction: column;
   color: rgba(0, 0, 0, 0.85);
@@ -82,13 +83,13 @@ body{
   margin-bottom: 10vh;
 }
 
-.form__textarea{
+.submitOrg__textarea{
   height: 10vh;
   resize: none;
   outline: none;
 }
 
-.form__select{
+.submitOrg__select{
   display: block;
   margin: 30px 0;
   padding: 10px 50px 10px 10px;
@@ -99,18 +100,18 @@ body{
   outline: none;
 }
 
-.form__select:focus{
+.submitOrg__select:focus{
   border-bottom: 1px solid rgba(250, 59, 40, 0.6);
 }
 
-.form__select option {
+.submitOrg__select option {
   color: rgba(0, 0, 0, 0.85);
   border: none;
   outline: none
 }
 
 @media only screen and (max-width: 600px) {
-  .form__question{
+  .submitOrg__question{
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.85);
@@ -119,14 +120,14 @@ body{
     font-weight: normal;
     font-size: 3vw;
   }
-  .form__container{
+  .submitOrg__container{
     margin-top: 10vh;
   }
-  .form__input{
+  .submitOrg__input{
     margin-top: 1vh;
   }
 
-  .form__logo{
+  .submitOrg__logo{
     align-self: center;
   }
 }

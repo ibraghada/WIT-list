@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HomePage from './homePage';
-import Form from './form';
+import SubmitOrg from './submitOrg';
 
 import './app.css';
 
@@ -13,7 +13,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={HomePage} />
-            <Route exact path='/registration' component={Form} />
+            <Route exact path='/submit-org' component={SubmitOrg} />
           </Switch>
         </div>
       </BrowserRouter>

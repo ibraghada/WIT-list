@@ -16,7 +16,7 @@ app.set('port', process.env.PORT || 8000);
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 app.use(cookieParser());
-app.use(controllers);
+app.use('/api/v1', controllers);
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'));
