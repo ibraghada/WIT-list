@@ -22,17 +22,16 @@
 }
 
 .header__navbar__submit button{
-  height: 7vh;
+  height: 40px;
   max-width: 40vw;
-  margin-top: 1.5vh;
+  margin: 14px 15px 14px 0;
   font-weight: bold;
-  margin-right: 2vw;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #FFFFFF;
-  background: none;
-  color: #FFFFFF;
+  background: #fff;
+  color: #ffd600;
   font-family: inherit;
   outline: none;
   cursor: pointer;
@@ -95,30 +94,34 @@
     height: 100vh;
   }
   .header__navbar {
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
   }
   .header__navbar__submit button {
     height: 5vh;
-    max-width: 60vw;
+    max-width: 40vw;
+    font-weight: bolder;
+    font-size: 0.6em;
   }
   .header__container {
     margin-top: 5vh;
   }
   .header__content__paragraph {
     font-size: 8vw;
-    text-align: center;
     padding-left: 0
   }
   .box{
-    width: 90px;
-    height: 45px;
+    width: 100px;
+    height: 50px;
     font-size: 13px;
     line-height: 18px;
-    margin: 2px
+    margin: 5px;
   }
-  .header__content__description{
+  .header__content__description {
     font-size: 3.5vw;
+    text-align: left;
+  }
+  .header__content__taps {
+    margin-top: 5vh;
   }
 }
