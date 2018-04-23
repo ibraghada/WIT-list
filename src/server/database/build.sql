@@ -21,7 +21,6 @@ CREATE TABLE orgs (
   operating VARCHAR NOT NULL,
   country VARCHAR NOT NULL,
   city VARCHAR NOT NULL,
-  cat INTEGER REFERENCES cats(id) NOT NULL,
   comments VARCHAR
 );
 

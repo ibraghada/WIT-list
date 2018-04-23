@@ -1,9 +1,47 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 
+import 'react-select/dist/react-select.css';
 import './index.css';
 
 class SubmitOrg extends Component {
+  constructor() {
+    super();
+    this.state = {
+      orgType: '',
+      audience: '',
+      funding: '',
+      theme: ''
+    };
+  }
+
+  handleOrgTypeChange = orgType => {
+    this.setState(
+      { ...this.state,
+        orgType }
+    );
+  }
+  handleAudienceChange = audience => {
+    this.setState(
+      { ...this.state,
+        audience }
+    );
+  }
+  handleFundingChange = funding => {
+    this.setState(
+      { ...this.state,
+        funding }
+    );
+  }
+  handleThemeChange = theme => {
+    this.setState(
+      { ...this.state,
+        theme }
+    );
+  }
+
   render() {
+    const { orgType, audience, funding, theme } = this.state;
     return (
       <div className='submitOrg__content'>
         <div className='submitOrg__logo'></div>
@@ -26,23 +64,59 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Type of Organization</span>
-              <select className='submitOrg__select'>
-                <option value='select-option'>Please select...</option>
-                <option value='org.'>Option 1</option>
-                <option value='org.'>Option 2</option>
-              </select>
+              <Select
+                name='orgType'
+                simpleValue
+                value={orgType}
+                onChange={this.handleOrgTypeChange}
+                multi
+                options={[
+                  { value: 'one', label: 'One' },
+                  { value: 'two', label: 'Two' }
+                ]}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Audience</span>
-              <input className='submitOrg__input' type='text'/>
+              <Select className='submitOrg__select'
+                name='audience'
+                value={audience}
+                onChange={this.handleAudienceChange}
+                simpleValue
+                multi
+                options={[
+                  { value: 'one', label: 'One' },
+                  { value: 'two', label: 'Two' }
+                ]}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Subcategory for funding (Optional)</span>
-              <input className='submitOrg__input' type='text'/>
+              <Select className='submitOrg__select'
+                name='funding'
+                value={funding}
+                onChange={this.handleFundingChange}
+                simpleValue
+                multi
+                options={[
+                  { value: 'one', label: 'One' },
+                  { value: 'two', label: 'Two' }
+                ]}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Focus area / theme</span>
-              <input className='submitOrg__input' type='text'/>
+              <Select className='submitOrg__select'
+                name='theme'
+                simpleValue
+                multi
+                value={theme}
+                onChange={this.handleThemeChange}
+                options={[
+                  { value: 'one', label: 'One' },
+                  { value: 'two', label: 'Two' }
+                ]}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Operating</span>
