@@ -4,6 +4,8 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import './index.css';
 
+import countries from '../../helpers/countries';
+
 class SubmitOrg extends Component {
   constructor() {
     super();
@@ -45,18 +47,21 @@ class SubmitOrg extends Component {
         type }
     );
   }
+
   handleAudienceChange = audience => {
     this.setState(
       { ...this.state,
         audience }
     );
   }
+
   handleFundingChange = funding => {
     this.setState(
       { ...this.state,
         funding }
     );
   }
+
   handleThemeChange = theme => {
     this.setState(
       { ...this.state,
@@ -78,15 +83,23 @@ class SubmitOrg extends Component {
     );
   }
 
+  handleOrgSubmit = () => {
+    const orgDetails = this.state;
+    const { postOrg } = this.props;
+    postOrg(orgDetails);
+  }
+
   componentDidMount() {
     const { getCats } = this.props;
     getCats();
   }
 
   render() {
-    const { type, audience, funding, theme, operating, country } = this.state;
+    const {
+      type, audience, funding, theme, operating, country, orgTypes, orgAudience, orgFunding, orgThemes
+    } = this.state;
     const { cats } = this.props;
-    const { orgTypes, orgAudience, orgFunding, orgThemes } = this.state;
+
     if (cats.length !== 0) {
       cats.forEach(cat => {
         switch (cat.parent_cat) {
@@ -192,8 +205,8 @@ class SubmitOrg extends Component {
                 value={operating}
                 onChange={this.handleOperatingChange}
                 options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' }
+                  { value: 'Internationally', label: 'Internationally' },
+                  { value: 'Locally', label: 'Locally' }
                 ]}
               />
             </div>
@@ -204,10 +217,7 @@ class SubmitOrg extends Component {
                 simpleValue
                 value={country}
                 onChange={this.handleCountryChange}
-                options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' }
-                ]}
+                options={countries}
               />
             </div>
             <div className='submitOrg__question'>
@@ -223,7 +233,9 @@ class SubmitOrg extends Component {
               ></textarea>
             </div>
             <div className='submitOrg__submit__div'>
-              <button className='submitOrg__submit'>Submit</button>
+              <button className='submitOrg__submit'
+                onClick={this.handleOrgSubmit}
+              >Submit</button>
             </div>
           </div>
         </div>

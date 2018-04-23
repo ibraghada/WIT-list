@@ -52,7 +52,7 @@ VALUES
 
 INSERT INTO orgs (name, website, description, operating, country, city, comments, accepted)
 VALUES
-('Astia', 'http://www.astia.org/', 'A not-for-profit organization that offers paid, week-long programs to help female entrepreneurs in technology, life sciences, and clean tech to learn skills for revenue generation, sales, and fundraising. Includes a support network of over 200 investors and 300 startup executives.', 'International', 'United States', 'California', 'This is a testery comment, it exists for building purposes.', TRUE),
+('Astia', 'http://www.astia.org/', 'A not-for-profit organization that offers paid, week-long programs to help female entrepreneurs in technology, life sciences, and clean tech to learn skills for revenue generation, sales, and fundraising. Includes a support network of over 200 investors and 300 startup executives.', 'Internationally', 'United States', 'California', 'This is a testery comment, it exists for building purposes.', TRUE),
 ('C.W. Developers', 'http://www.cwdevs.com/', 'Classes and events in Chicago for female programmers. They are in the middle of their Summer Apps Program, a series of three courses to transform your idea into a web and mobile app. They also host weekly open hack nights on Thursday (#XXHACK), where anyone can show up and get help on coding', 'Locally', 'United States', 'Chicago', 'This is a testery comment, it exists for building purposes.', TRUE);
 
 INSERT INTO orgs_sub_cats (org_id, sub_cat_id)
