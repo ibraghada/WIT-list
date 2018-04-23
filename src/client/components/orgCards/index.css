@@ -1,0 +1,7 @@
+.OrgCards__container {
+  display: flex;
+  justify-content: center;
+  padding: 45px 170px;
+  margin-bottom: 45px;
+  flex-wrap: wrap;
+}

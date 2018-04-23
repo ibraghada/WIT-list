@@ -21,7 +21,9 @@ CREATE TABLE orgs (
   operating VARCHAR NOT NULL,
   country VARCHAR NOT NULL,
   city VARCHAR NOT NULL,
-  comments VARCHAR
+  comments VARCHAR,
+  pending BOOLEAN DEFAULT TRUE,
+  accepted BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE orgs_sub_cats (

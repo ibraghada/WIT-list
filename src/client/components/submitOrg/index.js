@@ -8,17 +8,41 @@ class SubmitOrg extends Component {
   constructor() {
     super();
     this.state = {
-      orgType: '',
+      name: '',
+      website: '',
+      description: '',
+      operating: '',
+      country: '',
+      city: '',
+      type: '',
       audience: '',
       funding: '',
-      theme: ''
+      theme: '',
+      comments: '',
+      orgTypes: [],
+      orgAudience: [],
+      orgFunding: [],
+      orgThemes: []
     };
   }
 
-  handleOrgTypeChange = orgType => {
+  handleInputChange = event => {
+    const field = event.target;
+    const name = field.name;
+    const value = field.value;
+    this.setState(
+      {
+        ...this.state,
+        [name]: value
+      }
+    );
+    console.log(this.state);
+  }
+
+  handleOrgTypeChange = type => {
     this.setState(
       { ...this.state,
-        orgType }
+        type }
     );
   }
   handleAudienceChange = audience => {
@@ -40,8 +64,57 @@ class SubmitOrg extends Component {
     );
   }
 
+  handleCountryChange = country => {
+    this.setState(
+      { ...this.state,
+        country }
+    );
+  }
+
+  handleOperatingChange = operating => {
+    this.setState(
+      { ...this.state,
+        operating }
+    );
+  }
+
+  componentDidMount() {
+    const { getCats } = this.props;
+    getCats();
+  }
+
   render() {
-    const { orgType, audience, funding, theme } = this.state;
+    const { type, audience, funding, theme, operating, country } = this.state;
+    const { cats } = this.props;
+    const { orgTypes, orgAudience, orgFunding, orgThemes } = this.state;
+    if (cats.length !== 0) {
+      cats.forEach(cat => {
+        switch (cat.parent_cat) {
+          case 1:
+            return {
+              ...this.state,
+              orgTypes: orgTypes.push({ value: cat.id, label: cat.title })
+            };
+          case 2:
+            return {
+              ...this.state,
+              orgAudience: orgAudience.push({ value: cat.id, label: cat.title })
+            };
+          case 3:
+            return {
+              ...this.state,
+              orgFunding: orgFunding.push({ value: cat.id, label: cat.title })
+            };
+          case 4:
+            return {
+              ...this.state,
+              orgThemes: orgThemes.push({ value: cat.id, label: cat.title })
+            };
+          default:
+        }
+      });
+    }
+    console.log(this.state);
     return (
       <div className='submitOrg__content'>
         <div className='submitOrg__logo'></div>
@@ -52,28 +125,30 @@ class SubmitOrg extends Component {
           <div className='submitOrg__container'>
             <div className='submitOrg__question'>
               <span>Organization Name</span>
-              <input className='submitOrg__input' type='text'/>
+              <input className='submitOrg__input' type='text'
+                name='name' onChange={this.handleInputChange}/>
             </div>
             <div className='submitOrg__question'>
               <span>Website</span>
-              <input className='submitOrg__input' type='text'/>
+              <input className='submitOrg__input' type='text'
+                name='website' onChange={this.handleInputChange}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Description (250 Characters)</span>
-              <textarea className='submitOrg__input submitOrg__textarea'></textarea>
+              <textarea className='submitOrg__input submitOrg__textarea'
+                name='description' onChange={this.handleInputChange}
+              ></textarea>
             </div>
             <div className='submitOrg__question'>
               <span>Type of Organization</span>
-              <Select
+              <Select className='submitOrg__select'
                 name='orgType'
                 simpleValue
-                value={orgType}
+                value={type}
                 onChange={this.handleOrgTypeChange}
                 multi
-                options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' }
-                ]}
+                options={orgTypes}
               />
             </div>
             <div className='submitOrg__question'>
@@ -84,10 +159,7 @@ class SubmitOrg extends Component {
                 onChange={this.handleAudienceChange}
                 simpleValue
                 multi
-                options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' }
-                ]}
+                options={orgAudience}
               />
             </div>
             <div className='submitOrg__question'>
@@ -98,10 +170,7 @@ class SubmitOrg extends Component {
                 onChange={this.handleFundingChange}
                 simpleValue
                 multi
-                options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' }
-                ]}
+                options={orgFunding}
               />
             </div>
             <div className='submitOrg__question'>
@@ -112,6 +181,16 @@ class SubmitOrg extends Component {
                 multi
                 value={theme}
                 onChange={this.handleThemeChange}
+                options={orgThemes}
+              />
+            </div>
+            <div className='submitOrg__question'>
+              <span>Operating</span>
+              <Select className='submitOrg__select'
+                name='operating'
+                simpleValue
+                value={operating}
+                onChange={this.handleOperatingChange}
                 options={[
                   { value: 'one', label: 'One' },
                   { value: 'two', label: 'Two' }
@@ -119,28 +198,29 @@ class SubmitOrg extends Component {
               />
             </div>
             <div className='submitOrg__question'>
-              <span>Operating</span>
-              <select className='submitOrg__select'>
-                <option value='select-option'>Please select...</option>
-                <option value='locally'>Locally</option>
-                <option value='internationally'>Internationally</option>
-              </select>
-            </div>
-            <div className='submitOrg__question'>
               <span>Country</span>
-              <select className='submitOrg__select'>
-                <option value='select-option'>Please select...</option>
-                <option value='option'>Country</option>
-                <option value='option'>Country</option>
-              </select>
+              <Select className='submitOrg__select'
+                name='country'
+                simpleValue
+                value={country}
+                onChange={this.handleCountryChange}
+                options={[
+                  { value: 'one', label: 'One' },
+                  { value: 'two', label: 'Two' }
+                ]}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>City</span>
-              <input className='submitOrg__input' type='text'/>
+              <input className='submitOrg__input' type='text'
+                name='city' onChange={this.handleInputChange}
+              />
             </div>
             <div className='submitOrg__question'>
               <span>Additional Comments (Optional)</span>
-              <textarea className='submitOrg__input submitOrg__textarea'></textarea>
+              <textarea className='submitOrg__input submitOrg__textarea'
+                name='comments' onChange={this.handleInputChange}
+              ></textarea>
             </div>
             <div className='submitOrg__submit__div'>
               <button className='submitOrg__submit'>Submit</button>

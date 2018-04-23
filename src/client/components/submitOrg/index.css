@@ -92,7 +92,7 @@ body{
 .submitOrg__select{
   display: block;
   margin: 30px 0;
-  padding: 10px 50px 10px 10px;
+  padding: 10px 50px 0px 10px;
   background-color: inherit;
   color: rgba(0, 0, 0, 0.85);
   border: none;
@@ -108,6 +108,21 @@ body{
   color: rgba(0, 0, 0, 0.85);
   border: none;
   outline: none
+}
+
+.Select-control{
+  width: 60vw;
+  margin-left: -.8vw;
+  border: none;
+  border-radius: 0;
+  background-color: inherit;
+  color: #333;
+  cursor: default;
+  display: table;
+  height: 36px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
 }
 
 @media only screen and (max-width: 600px) {
