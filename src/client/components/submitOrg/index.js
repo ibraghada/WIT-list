@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 
 import 'react-select/dist/react-select.css';
 import './index.css';
 
 import countries from '../../helpers/countries';
+import inputsValidator from '../../helpers/inputsValidator';
 
 class SubmitOrg extends Component {
   constructor() {
@@ -21,6 +23,9 @@ class SubmitOrg extends Component {
       funding: '',
       theme: '',
       comments: '',
+      reSubmitRequired: {
+
+      },
       orgTypes: [],
       orgAudience: [],
       orgFunding: [],
@@ -38,7 +43,6 @@ class SubmitOrg extends Component {
         [name]: value
       }
     );
-    console.log(this.state);
   }
 
   handleOrgTypeChange = type => {
@@ -83,10 +87,46 @@ class SubmitOrg extends Component {
     );
   }
 
+  handleFailedInputs = arr => {
+    const ex = this.state;
+    arr.forEach(input => {
+      ex.reSubmitRequired[input] = true;
+    });
+    this.setState({
+      ...ex
+    });
+    console.log(this.state);
+  }
+
   handleOrgSubmit = () => {
-    const orgDetails = this.state;
+    const { name, website, description, operating, country, city, type, audience, funding, theme, comments } = this.state;
+
+    const orgDetails = {
+      name,
+      website,
+      description,
+      operating,
+      country,
+      city,
+      type,
+      audience,
+      funding,
+      theme,
+      comments
+    };
+
+    const failedInputs = inputsValidator(orgDetails);
     const { postOrg } = this.props;
-    postOrg(orgDetails);
+
+    !failedInputs.length?
+      (
+        this.setState({
+          ...this.state,
+          reSubmitRequired: false
+        }),
+        postOrg(orgDetails))
+      :
+      this.handleFailedInputs(failedInputs);
   }
 
   componentDidMount() {
@@ -96,7 +136,7 @@ class SubmitOrg extends Component {
 
   render() {
     const {
-      type, audience, funding, theme, operating, country, orgTypes, orgAudience, orgFunding, orgThemes
+      type, audience, funding, theme, operating, country, orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
     } = this.state;
     const { cats } = this.props;
 
@@ -127,7 +167,7 @@ class SubmitOrg extends Component {
         }
       });
     }
-    console.log(this.state);
+
     return (
       <div className='submitOrg__content'>
         <div className='submitOrg__logo'></div>
@@ -138,25 +178,25 @@ class SubmitOrg extends Component {
           <div className='submitOrg__container'>
             <div className='submitOrg__question'>
               <span>Organization Name</span>
-              <input className='submitOrg__input' type='text'
+              <input className={!reSubmitRequired.name? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
                 name='name' onChange={this.handleInputChange}/>
             </div>
             <div className='submitOrg__question'>
               <span>Website</span>
-              <input className='submitOrg__input' type='text'
+              <input className={!reSubmitRequired.website? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
                 name='website' onChange={this.handleInputChange}
               />
             </div>
             <div className='submitOrg__question'>
               <span>Description (250 Characters)</span>
-              <textarea className='submitOrg__input submitOrg__textarea'
+              <textarea className={!reSubmitRequired.description? 'submitOrg__input submitOrg__textarea':'submitOrg__textarea submitOrg__input submitOrg__error'}
                 name='description' onChange={this.handleInputChange}
               ></textarea>
             </div>
             <div className='submitOrg__question'>
               <span>Type of Organization</span>
-              <Select className='submitOrg__select'
-                name='orgType'
+              <Select className={!reSubmitRequired.type? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                name='type'
                 simpleValue
                 value={type}
                 onChange={this.handleOrgTypeChange}
@@ -166,7 +206,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Audience</span>
-              <Select className='submitOrg__select'
+              <Select className={!reSubmitRequired.audience? 'submitOrg__select':'submitOrg__select submitOrg__error'}
                 name='audience'
                 value={audience}
                 onChange={this.handleAudienceChange}
@@ -177,7 +217,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Subcategory for funding (Optional)</span>
-              <Select className='submitOrg__select'
+              <Select className={!reSubmitRequired.funding? 'submitOrg__select':'submitOrg__select submitOrg__error'}
                 name='funding'
                 value={funding}
                 onChange={this.handleFundingChange}
@@ -188,7 +228,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Focus area / theme</span>
-              <Select className='submitOrg__select'
+              <Select className={!reSubmitRequired.theme? 'submitOrg__select':'submitOrg__select submitOrg__error'}
                 name='theme'
                 simpleValue
                 multi
@@ -199,7 +239,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Operating</span>
-              <Select className='submitOrg__select'
+              <Select className={!reSubmitRequired.operating? 'submitOrg__select':'submitOrg__select submitOrg__error'}
                 name='operating'
                 simpleValue
                 value={operating}
@@ -212,7 +252,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Country</span>
-              <Select className='submitOrg__select'
+              <Select className={!reSubmitRequired.country? 'submitOrg__select':'submitOrg__select submitOrg__error'}
                 name='country'
                 simpleValue
                 value={country}
@@ -222,13 +262,13 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>City</span>
-              <input className='submitOrg__input' type='text'
+              <input className={!reSubmitRequired.city? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
                 name='city' onChange={this.handleInputChange}
               />
             </div>
             <div className='submitOrg__question'>
               <span>Additional Comments (Optional)</span>
-              <textarea className='submitOrg__input submitOrg__textarea'
+              <textarea className='submitOrg__textarea submitOrg__input'
                 name='comments' onChange={this.handleInputChange}
               ></textarea>
             </div>
@@ -237,11 +277,20 @@ class SubmitOrg extends Component {
                 onClick={this.handleOrgSubmit}
               >Submit</button>
             </div>
+            {reSubmitRequired &&
+              <span style={{ color: 'red', fontSize: '14px' }}>Some Fields Are Required!</span>
+            }
           </div>
         </div>
       </div>
     );
   }
 }
+
+SubmitOrg.propTypes = {
+  postOrg: PropTypes.func,
+  getCats: PropTypes.func,
+  cats: PropTypes.array
+};
 
 export default SubmitOrg;
