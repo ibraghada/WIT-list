@@ -23,9 +23,7 @@ class SubmitOrg extends Component {
       funding: '',
       theme: '',
       comments: '',
-      reSubmitRequired: {
-
-      },
+      reSubmitRequired: {},
       orgTypes: [],
       orgAudience: [],
       orgFunding: [],
@@ -88,18 +86,18 @@ class SubmitOrg extends Component {
   }
 
   handleFailedInputs = arr => {
-    const ex = this.state;
+    const _state = this.state;
     arr.forEach(input => {
-      ex.reSubmitRequired[input] = true;
+      _state.reSubmitRequired[input] = true;
     });
     this.setState({
-      ...ex
+      ..._state
     });
-    console.log(this.state);
   }
 
   handleOrgSubmit = () => {
-    const { name, website, description, operating, country, city, type, audience, funding, theme, comments } = this.state;
+    const { name, website, description, operating, country,
+      city, type, audience, funding, theme, comments } = this.state;
 
     const orgDetails = {
       name,
@@ -119,12 +117,7 @@ class SubmitOrg extends Component {
     const { postOrg } = this.props;
 
     !failedInputs.length?
-      (
-        this.setState({
-          ...this.state,
-          reSubmitRequired: false
-        }),
-        postOrg(orgDetails))
+      postOrg(orgDetails)
       :
       this.handleFailedInputs(failedInputs);
   }
@@ -136,7 +129,8 @@ class SubmitOrg extends Component {
 
   render() {
     const {
-      type, audience, funding, theme, operating, country, orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
+      type, audience, funding, theme, operating, country,
+      orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
     } = this.state;
     const { cats } = this.props;
 
@@ -186,6 +180,9 @@ class SubmitOrg extends Component {
               <input className={!reSubmitRequired.website? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
                 name='website' onChange={this.handleInputChange}
               />
+              {reSubmitRequired.website ?
+                (<span style={{ color: 'red', fontSize: '14px' }}>Enter A Valid Website Link!</span>) : null
+              }
             </div>
             <div className='submitOrg__question'>
               <span>Description (250 Characters)</span>
@@ -217,7 +214,7 @@ class SubmitOrg extends Component {
             </div>
             <div className='submitOrg__question'>
               <span>Subcategory for funding (Optional)</span>
-              <Select className={!reSubmitRequired.funding? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+              <Select className='submitOrg__select'
                 name='funding'
                 value={funding}
                 onChange={this.handleFundingChange}
@@ -277,8 +274,8 @@ class SubmitOrg extends Component {
                 onClick={this.handleOrgSubmit}
               >Submit</button>
             </div>
-            {reSubmitRequired &&
-              <span style={{ color: 'red', fontSize: '14px' }}>Some Fields Are Required!</span>
+            {Object.keys(reSubmitRequired).length ?
+              (<span style={{ color: 'red', fontSize: '14px' }}>Some Fields Are Required!</span>) : null
             }
           </div>
         </div>
