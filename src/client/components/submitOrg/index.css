@@ -1,4 +1,4 @@
-body{
+body {
     background-color: rgba(241, 233, 225, .4);
 }
 
@@ -21,6 +21,7 @@ body{
  color: white;
  width: 120px;
  height: 45px;
+ margin-bottom: 2vh;
  font-size: 17px;
  font-family: inherit;
  cursor: pointer;
@@ -96,7 +97,6 @@ body{
   background-color: inherit;
   color: rgba(0, 0, 0, 0.85);
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   outline: none;
 }
 
@@ -108,6 +108,27 @@ body{
   color: rgba(0, 0, 0, 0.85);
   border: none;
   outline: none
+}
+
+.Select-control{
+  width: 60vw;
+  margin-left: -.8vw;
+  border: none;
+  border-radius: 0;
+  color: #333;
+  cursor: default;
+  background-color: inherit;
+  display: table;
+  height: 36px;
+  outline: none;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.submitOrg__error, .submitOrg__error .Select-control {
+  border-bottom-color: red!important;
 }
 
 @media only screen and (max-width: 600px) {
