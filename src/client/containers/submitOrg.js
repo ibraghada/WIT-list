@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
   cats: state.getCats.cats,
   isPostingOrg: state.postOrg.isPosting,
   errorPostingOrg: state.postOrg.error,
-  response: state.postOrg.response
+  response: state.postOrg.response,
+  failedKeys: state.postOrg.failedKeys
 });
 
 const mapDispatchToProps = {

@@ -3,6 +3,7 @@ const insertSubCats = require('../database/queries/insertSubCats');
 
 module.exports = (req, res, next) => {
   const { orgDetails } = req.body;
+
   insertOrg(orgDetails, (insertOrgErr, orgData) => {
     if (insertOrgErr) {
       return next(insertOrgErr);
@@ -14,11 +15,11 @@ module.exports = (req, res, next) => {
     const subCatsIntsArr = subCatsArr.map(value => {
       return parseInt(value);
     });
-    insertSubCats(orgId, subCatsIntsArr, (insertSubCatsErr, subCatsData) => {
+    insertSubCats(orgId, subCatsIntsArr, insertSubCatsErr => {
       if (insertSubCatsErr) {
         return next(insertSubCatsErr);
       }
-      res.send({ inserted: true, rowCount: subCatsData.rowCount });
+      res.send({ inserted: true });
     });
   });
 };

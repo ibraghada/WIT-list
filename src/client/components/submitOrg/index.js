@@ -87,12 +87,17 @@ class SubmitOrg extends Component {
 
   handleFailedInputs = arr => {
     const _state = this.state;
+
     arr.forEach(input => {
       _state.reSubmitRequired[input] = true;
     });
-    this.setState({
-      ..._state
-    });
+
+    Object.keys(_state.reSubmitRequired).length ?
+      this.setState({
+        ..._state
+      })
+      :
+      null;
   }
 
   handleOrgSubmit = () => {
@@ -287,7 +292,8 @@ class SubmitOrg extends Component {
 SubmitOrg.propTypes = {
   postOrg: PropTypes.func,
   getCats: PropTypes.func,
-  cats: PropTypes.array
+  cats: PropTypes.array,
+  failedKeys: PropTypes.array
 };
 
 export default SubmitOrg;

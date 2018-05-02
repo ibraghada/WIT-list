@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   POST_ORG_IN_PROGRESS,
   POST_ORG_SUCCESS,
+  POST_ORG_BAD,
   POST_ORG_FAILURE
 } from '../../constants/actionTypes';
 
@@ -12,6 +13,11 @@ const postOrgInProgress = () => ({
 
 const postOrgSuccess = payload => ({
   type: POST_ORG_SUCCESS,
+  payload
+});
+
+const postOrgBad = payload => ({
+  type: POST_ORG_BAD,
   payload
 });
 
@@ -25,11 +31,12 @@ export const postOrg = orgDetails => dispatch => {
   axios.post('/api/v1/submit-org', { orgDetails })
     .then(
       response => {
-        const { status } = response.data;
-        if (!status) {
-          return new Error('Error Submitting Organization');
-        }
-        dispatch(postOrgSuccess(response.data));
+        const { inserted, failedKeys } = response.data;
+
+        !inserted && failedKeys.length >= 1 ?
+          dispatch(postOrgBad(failedKeys))
+          :
+          dispatch(postOrgSuccess(inserted));
 
       }
     ).catch(error => {
