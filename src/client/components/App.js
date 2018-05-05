@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import HomePage from './homePage';
+import HomePage from '../containers/homePage';
 import SubmitOrg from '../containers/submitOrg';
 import Footer from './footer';
 

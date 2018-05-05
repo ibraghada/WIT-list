@@ -128,8 +128,8 @@ class SubmitOrg extends Component {
   }
 
   componentDidMount() {
-    const { getCats } = this.props;
-    getCats();
+    const { getSubCats } = this.props;
+    getSubCats();
   }
 
   render() {
@@ -137,30 +137,30 @@ class SubmitOrg extends Component {
       type, audience, funding, theme, operating, country,
       orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
     } = this.state;
-    const { cats } = this.props;
+    const { subCats } = this.props;
 
-    if (cats.length !== 0) {
-      cats.forEach(cat => {
-        switch (cat.parent_cat) {
+    if (subCats.length !== 0) {
+      subCats.forEach(subCat => {
+        switch (subCat.parent_cat) {
           case 1:
             return {
               ...this.state,
-              orgTypes: orgTypes.push({ value: cat.id, label: cat.title })
+              orgTypes: orgTypes.push({ value: subCat.id, label: subCat.title })
             };
           case 2:
             return {
               ...this.state,
-              orgAudience: orgAudience.push({ value: cat.id, label: cat.title })
+              orgAudience: orgAudience.push({ value: subCat.id, label: subCat.title })
             };
           case 3:
             return {
               ...this.state,
-              orgFunding: orgFunding.push({ value: cat.id, label: cat.title })
+              orgFunding: orgFunding.push({ value: subCat.id, label: subCat.title })
             };
           case 4:
             return {
               ...this.state,
-              orgThemes: orgThemes.push({ value: cat.id, label: cat.title })
+              orgThemes: orgThemes.push({ value: subCat.id, label: subCat.title })
             };
           default:
         }
@@ -291,8 +291,8 @@ class SubmitOrg extends Component {
 
 SubmitOrg.propTypes = {
   postOrg: PropTypes.func,
-  getCats: PropTypes.func,
-  cats: PropTypes.array,
+  getSubCats: PropTypes.func,
+  subCats: PropTypes.array,
   failedKeys: PropTypes.array
 };
 

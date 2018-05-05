@@ -1,11 +1,17 @@
-// HARD CODED
-
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
 class Search extends Component {
+  componentDidMount() {
+    const { getSubCats, getCats } = this.props;
+    getCats();
+    getSubCats();
+  }
+
   render() {
+    const { subCats, cats } = this.props;
     return (
       <section className='search__container'>
         <div className='search__search-area'>
@@ -25,25 +31,41 @@ class Search extends Component {
         </div>
         <div className='search__filters'>
           <div className='search__main-filters'>
-            <button className='search__main-filters-btn'>Org. Type</button>
-            <button className='search__main-filters-btn'>Audience</button>
-            <button className='search__main-filters-btn'>Funding</button>
-            <button className='search__main-filters-btn'>Focus Area</button>
+            {
+              cats.map(
+                cat => {
+                  return <button
+                    key={cat.id} className='search__main-filters-btn'>
+                    {cat.title}
+                  </button>;
+                }
+              )
+            }
           </div>
           <div className='search__sub-filters'>
-            <button className='search__sub-filters-btn'>NON-Frofit</button>
-            <button className='search__sub-filters-btn'>Community</button>
-            <button className='search__sub-filters-btn'>Education</button>
-            <button className='search__sub-filters-btn'>Events</button>
-            <button className='search__sub-filters-btn'>Accelerator</button>
-            <button className='search__sub-filters-btn'>Media</button>
-            <button className='search__sub-filters-btn'>Investment</button>
-            <button className='search__sub-filters-btn'>Business</button>
+            {
+              subCats.map(
+                subCat => {
+                  return <button
+                    key={subCat.id} className='search__sub-filters-btn'>
+                    {subCat.title}
+                  </button>;
+                }
+              )
+            }
           </div>
         </div>
       </section>
     );
   }
 }
+
+Search.propTypes = {
+  getSubCats: PropTypes.func,
+  getCats: PropTypes.func,
+  subCats: PropTypes.array,
+  cats: PropTypes.array,
+  orgFilter: PropTypes.func
+};
 
 export default Search;
