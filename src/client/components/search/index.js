@@ -31,7 +31,7 @@ class Search extends Component {
 
   handleClearFiltersClick = () => {
     const { filter } = this.props;
-    filter([], null);
+    filter([], [], 0);
   }
 
   handleShowFiltersClick = () => {
