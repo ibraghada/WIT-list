@@ -2,10 +2,10 @@ BEGIN;
 
 INSERT INTO cats (title)
 VALUES
-('Organization Type'),
+('Org. Type'),
 ('Audience'),
 ('Funding'),
-('Focus area / Theme');
+('Theme');
 
 INSERT INTO sub_cats (title, parent_cat)
 VALUES

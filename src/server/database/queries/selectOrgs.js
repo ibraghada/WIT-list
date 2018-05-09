@@ -1,11 +1,11 @@
 const dbConnection = require('../dbConnection');
 
-const selectCats = cb => {
+const selectOrgs = cb => {
   const query = {
     text:
-    'SELECT * FROM cats'
+    'SELECT * FROM orgs WHERE accepted=true'
   };
   dbConnection.query(query, cb);
 };
 
-module.exports = selectCats;
+module.exports = selectOrgs;

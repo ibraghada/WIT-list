@@ -22,7 +22,7 @@ const getCatsFailure = error => ({
 
 export const getCats = () => dispatch => {
   dispatch(getCatsInProgress());
-  axios.get('/api/v1/categories')
+  axios.get('/api/v1/cats')
     .then(
       response => {
         if (response >= 400) {

@@ -1,5 +1,4 @@
 const selectCats = require('../database/queries/selectCats');
-
 module.exports = (req, res, next) => {
   selectCats((err, cats) => {
     if (err) {

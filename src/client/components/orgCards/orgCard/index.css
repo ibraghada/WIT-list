@@ -45,25 +45,27 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  font-size: 28px;
-  text-align: right;
-  letter-spacing: 0.1em;
+  line-height: 25px;
+  font-size: 22px;
+  letter-spacing: 0.05em;
   color: rgba(5, 4, 7, 0.8);
   margin: 0;
-  text-align: center;
 }
 
 .OrgCard__visible h2 {
   color: rgba(251, 98, 83, 0.8);
+  text-align: center;
+  letter-spacing: 0.1em;
 }
 
 .OrgCard__visible p {
   color: rgba(251, 98, 83, 0.8);
   font-size: 16px;
   height: 150px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .OrgCard__hidden h2 {
@@ -72,14 +74,10 @@
   margin-bottom: 10px;
 }
 
-.OrgCard__hidden h4 {
-  margin-bottom: 20px;
-}
-
 .OrgCard__hidden h3 {
   color: rgba(5, 4, 7, 0.7);
   font-size: 16px;
-  margin-bottom: 10px;
+  margin: 5px 0;
   text-align: left;
 }
 
