@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Header from '../header';
 import Search from '../search';
+import OrgCards from '../orgCards';
 
 import './index.css';
 
@@ -11,6 +12,7 @@ class HomePage extends Component {
       <div>
         <Header />
         <Search />
+        <OrgCards />
       </div>
     );
   }

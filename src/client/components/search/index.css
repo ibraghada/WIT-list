@@ -3,12 +3,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 400px;
+  box-sizing: border-box;
+  padding: 45px 0px;
 }
 
 .search__search-area {
   height: 65px;
-  margin: 45px 0 15px 0;
+  margin: 0 0 15px 0;
 }
 
 .search__search-field {
@@ -30,6 +31,7 @@
   width: 835px;
   display: flex;
   justify-content: space-between;
+  margin: 0 0 15px 0;
 }
 
 .search__icon-btn {
@@ -61,16 +63,11 @@
 
 .search__filters {
   width: 835px;
-  margin: 10px 0;
 }
 
-.search__main-filters {
-  margin-bottom: 15px;
-}
-
-.search__sub-filters {
+.search__main-filters, .search__sub-filters {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -78,7 +75,6 @@
   width: 132.5px;
   height: 40px;
   background: #fff;
-  margin-right: 10px;
   border: none;
   font-family: Montserrat;
   font-style: normal;
@@ -88,11 +84,13 @@
   text-align: center;
   color: rgba(5, 4, 7, 0.8);
   cursor: pointer;
+  margin: 0 5px 5px 0;
   outline: none;
 }
 
 .search__sub-filters-btn {
-  min-width: 132.5px
+  min-width: 132.5px;
+  height: 30px;
 }
 
 .search__main-filters-btn:hover, .search__sub-filters-btn:hover {
@@ -101,11 +99,6 @@
 
 .search__main-filters-btn:active, .search__sub-filters-btn:active {
   background: #F1E9E1;
-}
-
-.search__sub-filters-btn {
-  height: 30px;
-  margin-bottom: 2.5px;
 }
 
 @media only screen and (max-width: 920px) {
@@ -119,12 +112,6 @@
     width: 450px;
   }
 
-  .search__main-filters, .search__sub-filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   .search__main-filters-btn {
     margin-bottom: 5px;
   }
@@ -133,6 +120,10 @@
     font-size: 11px;
     width: 80px;
     min-width: 80px
+  }
+
+  .search__main-filters-btn, .search__sub-filters-btn {
+    flex-grow: 1
   }
 }
 
@@ -148,12 +139,6 @@
 
   .search__filters-controllers, .search__filters {
     width: 270px;
-  }
-
-  .search__main-filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
   .search__main-filters-btn {
