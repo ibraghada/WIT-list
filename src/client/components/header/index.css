@@ -69,9 +69,9 @@
   justify-content: space-between;
 }
 
-.box{
+.header__box{
   width: 138px;
-  height: 69px;
+  height: 70px;
   margin: 5px;
   flex-shrink: 1;
   border: 1px solid #FFFFFF;
@@ -82,11 +82,13 @@
   align-items: center;
   color: #FFFFFF;
   line-height: 27px;
+  text-align: center;
+  padding: 0 5px;
+  cursor: pointer;
 }
 
-.box:hover {
+.header__box:hover, .header__box-selected {
     background-color: #ff3800;
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

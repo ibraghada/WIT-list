@@ -1,30 +1,47 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
 class OrgCard extends Component {
   render() {
+    const { org, orgSubCats } = this.props;
+    const { name, website, description, country, city, operating } = org;
     return (
       <div className='OrgCard__card'>
         <div className='OrgCard__visible'>
           <div className='OrgCard__info'>
-            <h2>ASTIA</h2>
+            <h2>{name}</h2>
             <div className='OrgCard_divider'></div>
-            <p>A not-for-profit organization that offers paid, week-long programs to help female entrepreneurs in technology.</p>
+            <p>{description.slice(0, 125)}...</p>
           </div>
         </div>
         <div className='OrgCard__hidden'>
           <div className='OrgCard__info'>
-            <h2>ASTIA</h2>
-            <h4>California, U.S.</h4>
+            <h2>{name}</h2>
+            <h4>{city}, {country}</h4>
+            <h4>Operating {operating}</h4>
             <h3>Filters:</h3>
-            <p>Not For Profit, Education</p>
+            <p>
+              {
+                orgSubCats.map(
+                  subCat => {
+                    return `${subCat.title}, `;
+                  }
+                ).join('').slice(0, -2)
+              }
+            </p>
           </div>
-          <a href='http://google.com' target='_blank' rel='noopener noreferrer'>WEBSITE</a>
+          <a href={website} target='_blank' rel='noopener noreferrer'>WEBSITE</a>
         </div>
       </div>
     );
   }
 }
+
+OrgCard.propTypes = {
+  org: PropTypes.object,
+  orgSubCats: PropTypes.array
+};
 
 export default OrgCard;
