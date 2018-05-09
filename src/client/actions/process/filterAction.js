@@ -7,14 +7,14 @@ import {
 
 import filterHelper from '../../helpers/applyFilter';
 
-const addFilter = filterValue => ({
+const addFilter = filters => ({
   type: ADD_FILTER,
-  payload: filterValue
+  payload: filters
 });
 
-const dropFilter = filterValue => ({
+const dropFilter = filters => ({
   type: DROP_FILTER,
-  payload: filterValue
+  payload: filters
 });
 
 const dropAllFilter = () => ({
@@ -27,32 +27,30 @@ const filterAction = filteredOrgs => ({
 });
 
 export const filter = (orgSubCats, orgs, filterValue) => (dispatch, getState) => {
-  if (!filterValue) {
-    return dispatch(dropAllFilter());
-  }
-
   const { filters } = getState().filterReducer;
   let newFilters = [];
-  filters.includes(filterValue) ?
-    (
-      filters.map(filterId => {
-        filterId !== filterValue ?
-          newFilters.push(filterId)
-          : null;
-      }),
-      dispatch(dropFilter(newFilters))
-    )
-    :
-    (
-      newFilters = filters,
-      newFilters.push(filterValue),
-      dispatch(addFilter(newFilters))
+
+  if (!filterValue) {
+    dispatch(dropAllFilter());
+  } else if (filters.length === 0) {
+    newFilters.push(filterValue);
+    dispatch(addFilter(newFilters));
+  } else if (filters.includes(filterValue)) {
+    filters.map(
+      _filter => {
+        _filter === filterValue ?
+          null
+          :
+          newFilters.push(_filter);
+      }
     );
-  let filteredOrgs = [];
-  !newFilters.length
-    ?
-    (filteredOrgs)
-    :
-    filteredOrgs = filterHelper(orgSubCats, orgs, filters);
-  dispatch(filterAction(filteredOrgs));
+    dispatch(dropFilter(newFilters));
+  } else {
+    newFilters = filters;
+    newFilters.push(filterValue);
+    dispatch(addFilter(newFilters));
+  }
+
+  const filteredOrgs = filterHelper(orgSubCats, orgs, newFilters);
+  return dispatch(filterAction(filteredOrgs));
 };
