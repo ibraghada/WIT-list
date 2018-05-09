@@ -18,8 +18,7 @@ const dropFilter = filterValue => ({
 });
 
 const dropAllFilter = () => ({
-  type: DROP_ALL_FILTERS,
-  payload: []
+  type: DROP_ALL_FILTERS
 });
 
 const filterAction = filteredOrgs => ({
@@ -27,7 +26,7 @@ const filterAction = filteredOrgs => ({
   payload: filteredOrgs
 });
 
-export const filter = (orgs, filterValue) => (dispatch, getState) => {
+export const filter = (orgSubCats, orgs, filterValue) => (dispatch, getState) => {
   if (!filterValue) {
     return dispatch(dropAllFilter());
   }
@@ -49,6 +48,11 @@ export const filter = (orgs, filterValue) => (dispatch, getState) => {
       newFilters.push(filterValue),
       dispatch(addFilter(newFilters))
     );
-  const filteredOrgs = filterHelper(orgs, filters);
+  let filteredOrgs = [];
+  !newFilters.length
+    ?
+    (filteredOrgs)
+    :
+    filteredOrgs = filterHelper(orgSubCats, orgs, filters);
   dispatch(filterAction(filteredOrgs));
 };

@@ -1,9 +1,17 @@
-export default (orgs, filters) => {
+export default (orgSubCats, orgs, filters) => {
   const filteredOrgs = [];
-  orgs.map(org => {
+  orgSubCats.map(orgSubCat => {
     filters.map(filter => {
-      (org.sub_cat_id === filter && !filteredOrgs.includes(org.org_id)) ?
-        filteredOrgs.push(org.org_id)
+      (orgSubCat.sub_cat_id === filter && !filteredOrgs.includes(orgSubCat.org_id)) ?
+        (
+          orgs.map(
+            org => {
+              if (org.id === orgSubCat.org_id) {
+                filteredOrgs.push(org);
+              }
+            }
+          )
+        )
         :
         null;
     });

@@ -54,7 +54,22 @@
 }
 
 .search__info-msg {
+  font-family: inherit;
+  width: 820px;
+  padding: 5px;
+  position: relative;
+  top: -100px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
 
+.search__info-msg a, search__info-msg a :visited {
+  font-family: inherit;
+  text-decoration: none;
+  color: #ffd600;
+  font-weight: bolder;
 }
 
 .search__controllers-left {
@@ -126,13 +141,13 @@
 }
 
 @media only screen and (max-width: 920px) {
-  .search__filters-controllers, .search__search-field, .search__filters {
+  .search__filters-controllers, .search__search-field, .search__filters, .search__info-msg {
     width: 600px;
   }
 }
 
 @media only screen and (max-width: 700px) {
-  .search__filters-controllers, .search__search-field, .search__filters {
+  .search__filters-controllers, .search__search-field, .search__filters, .search__info-msg {
     width: 450px;
   }
 
@@ -152,7 +167,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .search__search-field {
+  .search__search-field, .search__info-msg {
     width: 270px;
     font-size: 14px;
     padding-left: 50px;

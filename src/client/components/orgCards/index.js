@@ -11,17 +11,13 @@ class OrgCards extends Component {
     let orgsToDisplay = [];
 
     filters.length > 0 ?
-      (orgs.map(org => {
-        filteredOrgs.map(orgId => {
-          org.id === orgId ?
-            orgsToDisplay.push(org)
-            : null;
-        });
-      }))
+      orgsToDisplay = filteredOrgs
       :
       (
         (filteredOrgs.length > 0 && filters.length === 0) ?
-          orgsToDisplay = filteredOrgs || orgs : orgsToDisplay = orgs
+          orgsToDisplay = filteredOrgs || orgs
+          :
+          orgsToDisplay = orgs
       );
 
     return (

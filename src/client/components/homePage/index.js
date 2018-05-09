@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../header';
+import Header from '../../containers/header';
 import Search from '../../containers/search';
 import OrgCards from '../../containers/orgCards';
 

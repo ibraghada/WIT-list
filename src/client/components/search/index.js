@@ -24,9 +24,9 @@ class Search extends Component {
   }
 
   handleSubFilterClick = e => {
-    const { orgsSubCats, filter } = this.props;
+    const { orgsSubCats, orgs, filter } = this.props;
     const filterValue = parseInt(e.target.id);
-    filter(orgsSubCats, filterValue);
+    filter(orgsSubCats, orgs, filterValue);
   }
 
   handleClearFiltersClick = () => {
@@ -59,14 +59,20 @@ class Search extends Component {
         <div className='search__search-area'>
           <div className='search__box-field'>
             <input
-              className={`search__search-field ${searchFailed ? 'red-border':''}`}
+              className='search__search-field'
               type='text'
               name='searchInput'
               placeholder='Search for an organization by name, city, interest or action...'
               defaultValue=''
               onChange={this.handleSearchInput}
             />
-            <div className='search__info-msg'>This organization wasn't found on our database, can you <a href='/submit-org'>tell us about it!</a></div>
+            {
+              searchFailed &&
+              (<div className='search__info-msg'>
+                This organization wasn't found on our database, can you
+                <a href='/submit-org'> tell us about it?!</a>
+              </div>)
+            }
           </div>
         </div>
         <div className='search__filters-controllers'>
