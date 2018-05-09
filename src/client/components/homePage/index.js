@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 
 import Header from '../header';
 import Search from '../../containers/search';
-import OrgCards from '../orgCards';
+import OrgCards from '../../containers/orgCards';
 
 import './index.css';
 
 class HomePage extends Component {
-
   componentDidMount() {
     const { getOrgsSubCats, getOrgs } = this.props;
     getOrgsSubCats();

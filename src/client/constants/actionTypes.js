@@ -18,3 +18,10 @@ export const POST_ORG_IN_PROGRESS = 'POST_ORG_IN_PROGRESS';
 export const POST_ORG_SUCCESS = 'POST_ORG_SUCCESS';
 export const POST_ORG_BAD = 'POST_ORG_BAD';
 export const POST_ORG_FAILURE = 'POST_ORG_FAILURE';
+
+export const ADD_FILTER = 'ADD_FILTER';
+export const DROP_FILTER = 'DROP_FILTER';
+export const FILTER_ACTION = 'FILTER_ACTION';
+export const DROP_ALL_FILTERS = 'DROP_ALL_FILTERS';
+export const SEARCH_ACTION = 'SEARCH_ACTION';
+export const SEARCH_FAILED = 'SEARCH_FAILED';

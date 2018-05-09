@@ -3,3 +3,7 @@ body {
   margin: 0 auto;
   font-family: Montserrat;
 }
+
+.red-border {
+  border: 3px solid red;
+}

@@ -31,7 +31,6 @@
   width: 835px;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 15px 0;
 }
 
 .search__icon-btn {
@@ -43,6 +42,19 @@
   color: white;
   font-size: Montserrat;
   font-weight: bolder;
+}
+
+.search__box-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.search__box-field input {
+  box-sizing: border-box;
+}
+
+.search__info-msg {
+
 }
 
 .search__controllers-left {
@@ -59,6 +71,10 @@
   background-position: left;
   background-size: 20px;
   padding-left: 25px;
+}
+
+.search__icon-btn:hover {
+  color: rgb(230, 230, 230)
 }
 
 .search__filters {
@@ -103,6 +119,10 @@
 
 .search__main-filters-btn:active, .search__sub-filters-btn:active {
   background: #F1E9E1;
+}
+
+.search__selected-filter {
+  background: rgb(230, 230, 230);
 }
 
 @media only screen and (max-width: 920px) {
