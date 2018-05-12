@@ -45,7 +45,7 @@ class OrgCards extends Component {
             :
             <div className='orgCards__error-div'>
               <div className='orgCards__error-img'></div>
-              <h2>We Are Sorry, We Couldn't Find Anything That Matches Your Search Options.</h2>
+              <h2>We Are Sorry, We Couldn't Find Anything That Matches Your Search Options! :(</h2>
             </div>
         }
       </div>

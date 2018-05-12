@@ -178,7 +178,7 @@ class SubmitOrg extends Component {
             <div className='submitOrg__error-div'>
               <Link to={'/'}><div className='submitOrg__logo'></div></Link>
               <div className='submitOrg__error-img'></div>
-              <h2>Woohoo! Your Request Was Sent Successfuly.</h2>
+              <h2>Woohoo! Your Request Was Sent Successfuly! :)</h2>
             </div>
           )
           :
