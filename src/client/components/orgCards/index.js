@@ -31,17 +31,22 @@ class OrgCards extends Component {
                   orgsSubCats.map
                   (
                     item => {
-                      item.org_id === org.id ?
+                      item.org_id === org.id
+                        ?
                         orgSubCats.push(item)
                         :
                         null;
                     }
                   );
                   return <OrgCard key={org.id} org={org} orgSubCats={orgSubCats}/>;
-                })
+                }
+              )
             )
             :
-            <h2>Empty</h2>
+            <div className='orgCards__error-div'>
+              <div className='orgCards__error-img'></div>
+              <h2>We Are Sorry, We Couldn't Find Anything That Matches Your Search Options.</h2>
+            </div>
         }
       </div>
     );
