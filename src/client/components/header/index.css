@@ -91,6 +91,15 @@
     background-color: #ff3800;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a :visited {
+  color: inherit;
+}
+
 @media only screen and (max-width: 600px) {
   .header {
     height: 100vh;

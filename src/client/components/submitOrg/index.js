@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 
@@ -169,7 +171,7 @@ class SubmitOrg extends Component {
 
     return (
       <div className='submitOrg__content'>
-        <div className='submitOrg__logo'></div>
+        <Link to={'/'}><div className='submitOrg__logo'></div></Link>
         <div className='submitOrg'>
           <div>
             <span className='submitOrg__title'>Registration</span>
