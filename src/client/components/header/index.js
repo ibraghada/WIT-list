@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import typeWriter from '../../helpers/typeWriter';
@@ -31,9 +32,9 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='header__navbar'>
-          <div className='header__navbar__logo'></div>
+          <Link to={'/'}><div className='header__navbar__logo'></div></Link>
           <div className='header__navbar__submit'>
-            <button type='button'>Submit Your Organization</button>
+            <Link to={'/submit-org'}><button type='button'>Submit Your Organization</button></Link>
           </div>
         </div>
         <div className='header__container'>
