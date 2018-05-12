@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
+import Footer from '../footer';
 
 import 'react-select/dist/react-select.css';
 import './index.css';
@@ -139,7 +140,7 @@ class SubmitOrg extends Component {
       type, audience, funding, theme, operating, country,
       orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
     } = this.state;
-    const { subCats } = this.props;
+    const { subCats, isPostingOrg, response } = this.props;
 
     if (subCats.length !== 0) {
       subCats.forEach(subCat => {
@@ -170,122 +171,145 @@ class SubmitOrg extends Component {
     }
 
     return (
-      <div className='submitOrg__content'>
-        <Link to={'/'}><div className='submitOrg__logo'></div></Link>
-        <div className='submitOrg'>
-          <div>
-            <span className='submitOrg__title'>Registration</span>
-          </div>
-          <div className='submitOrg__container'>
-            <div className='submitOrg__question'>
-              <span>Organization Name</span>
-              <input className={!reSubmitRequired.name? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
-                name='name' onChange={this.handleInputChange}/>
+      <div>
+        {response
+          ?
+          (
+            <div className='submitOrg__error-div'>
+              <Link to={'/'}><div className='submitOrg__logo'></div></Link>
+              <div className='submitOrg__error-img'></div>
+              <h2>Woohoo! Your Request Was Sent Successfuly.</h2>
             </div>
-            <div className='submitOrg__question'>
-              <span>Website</span>
-              <input className={!reSubmitRequired.website? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
-                name='website' onChange={this.handleInputChange}
-              />
-              {reSubmitRequired.website ?
-                (<span style={{ color: 'red', fontSize: '14px' }}>Enter A Valid Website Link!</span>) : null
-              }
+          )
+          :
+          (
+            <div className='submitOrg__content'>
+              <Link to={'/'}><div className='submitOrg__logo'></div></Link>
+              <div className='submitOrg'>
+                <div>
+                  <span className='submitOrg__title'>Registration</span>
+                </div>
+                <div className='submitOrg__container'>
+                  <div className='submitOrg__question'>
+                    <span>Organization Name</span>
+                    <input className={!reSubmitRequired.name? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
+                      name='name' onChange={this.handleInputChange}/>
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Website</span>
+                    <input className={!reSubmitRequired.website? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
+                      name='website' onChange={this.handleInputChange}
+                    />
+                    {reSubmitRequired.website ?
+                      (<span style={{ color: 'red', fontSize: '14px' }}>Enter A Valid Website Link!</span>) : null
+                    }
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Description (250 Characters)</span>
+                    <textarea className={!reSubmitRequired.description? 'submitOrg__input submitOrg__textarea':'submitOrg__textarea submitOrg__input submitOrg__error'}
+                      name='description' onChange={this.handleInputChange}
+                    ></textarea>
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Type of Organization</span>
+                    <Select className={!reSubmitRequired.type? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                      name='type'
+                      simpleValue
+                      value={type}
+                      onChange={this.handleOrgTypeChange}
+                      multi
+                      options={orgTypes}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Audience</span>
+                    <Select className={!reSubmitRequired.audience? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                      name='audience'
+                      value={audience}
+                      onChange={this.handleAudienceChange}
+                      simpleValue
+                      multi
+                      options={orgAudience}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Subcategory for funding (Optional)</span>
+                    <Select className='submitOrg__select'
+                      name='funding'
+                      value={funding}
+                      onChange={this.handleFundingChange}
+                      simpleValue
+                      multi
+                      options={orgFunding}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Focus area / theme</span>
+                    <Select className={!reSubmitRequired.theme? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                      name='theme'
+                      simpleValue
+                      multi
+                      value={theme}
+                      onChange={this.handleThemeChange}
+                      options={orgThemes}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Operating</span>
+                    <Select className={!reSubmitRequired.operating? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                      name='operating'
+                      simpleValue
+                      value={operating}
+                      onChange={this.handleOperatingChange}
+                      options={[
+                        { value: 'Internationally', label: 'Internationally' },
+                        { value: 'Locally', label: 'Locally' }
+                      ]}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Country</span>
+                    <Select className={!reSubmitRequired.country? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                      name='country'
+                      simpleValue
+                      value={country}
+                      onChange={this.handleCountryChange}
+                      options={countries}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>City</span>
+                    <input className={!reSubmitRequired.city? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
+                      name='city' onChange={this.handleInputChange}
+                    />
+                  </div>
+                  <div className='submitOrg__question'>
+                    <span>Additional Comments (Optional)</span>
+                    <textarea className='submitOrg__textarea submitOrg__input'
+                      name='comments' onChange={this.handleInputChange}
+                    ></textarea>
+                  </div>
+                  <div className='submitOrg__submit__div'>
+                    {isPostingOrg ?
+                      (<button className='submitOrg__submit submitOrg__btn-disabled' disabled>
+                        <div className='submitOrg__loader'></div>
+                      </button>)
+                      :
+                      (<button className='submitOrg__submit'
+                        onClick={this.handleOrgSubmit}
+                      >Submit</button>)
+                    }
+                  </div>
+                  {Object.keys(reSubmitRequired).length ?
+                    (<span style={{ color: 'red', fontSize: '14px' }}>Some Fields Are Required!</span>) : null
+                  }
+                </div>
+              </div>
             </div>
-            <div className='submitOrg__question'>
-              <span>Description (250 Characters)</span>
-              <textarea className={!reSubmitRequired.description? 'submitOrg__input submitOrg__textarea':'submitOrg__textarea submitOrg__input submitOrg__error'}
-                name='description' onChange={this.handleInputChange}
-              ></textarea>
-            </div>
-            <div className='submitOrg__question'>
-              <span>Type of Organization</span>
-              <Select className={!reSubmitRequired.type? 'submitOrg__select':'submitOrg__select submitOrg__error'}
-                name='type'
-                simpleValue
-                value={type}
-                onChange={this.handleOrgTypeChange}
-                multi
-                options={orgTypes}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Audience</span>
-              <Select className={!reSubmitRequired.audience? 'submitOrg__select':'submitOrg__select submitOrg__error'}
-                name='audience'
-                value={audience}
-                onChange={this.handleAudienceChange}
-                simpleValue
-                multi
-                options={orgAudience}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Subcategory for funding (Optional)</span>
-              <Select className='submitOrg__select'
-                name='funding'
-                value={funding}
-                onChange={this.handleFundingChange}
-                simpleValue
-                multi
-                options={orgFunding}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Focus area / theme</span>
-              <Select className={!reSubmitRequired.theme? 'submitOrg__select':'submitOrg__select submitOrg__error'}
-                name='theme'
-                simpleValue
-                multi
-                value={theme}
-                onChange={this.handleThemeChange}
-                options={orgThemes}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Operating</span>
-              <Select className={!reSubmitRequired.operating? 'submitOrg__select':'submitOrg__select submitOrg__error'}
-                name='operating'
-                simpleValue
-                value={operating}
-                onChange={this.handleOperatingChange}
-                options={[
-                  { value: 'Internationally', label: 'Internationally' },
-                  { value: 'Locally', label: 'Locally' }
-                ]}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Country</span>
-              <Select className={!reSubmitRequired.country? 'submitOrg__select':'submitOrg__select submitOrg__error'}
-                name='country'
-                simpleValue
-                value={country}
-                onChange={this.handleCountryChange}
-                options={countries}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>City</span>
-              <input className={!reSubmitRequired.city? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
-                name='city' onChange={this.handleInputChange}
-              />
-            </div>
-            <div className='submitOrg__question'>
-              <span>Additional Comments (Optional)</span>
-              <textarea className='submitOrg__textarea submitOrg__input'
-                name='comments' onChange={this.handleInputChange}
-              ></textarea>
-            </div>
-            <div className='submitOrg__submit__div'>
-              <button className='submitOrg__submit'
-                onClick={this.handleOrgSubmit}
-              >Submit</button>
-            </div>
-            {Object.keys(reSubmitRequired).length ?
-              (<span style={{ color: 'red', fontSize: '14px' }}>Some Fields Are Required!</span>) : null
-            }
-          </div>
-        </div>
+          )
+
+        }
+        <Footer />
       </div>
     );
   }
@@ -295,6 +319,8 @@ SubmitOrg.propTypes = {
   postOrg: PropTypes.func,
   getSubCats: PropTypes.func,
   subCats: PropTypes.array,
+  isPostingOrg: PropTypes.bool,
+  response: PropTypes.bool,
   failedKeys: PropTypes.array
 };
 
