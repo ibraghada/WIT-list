@@ -29,9 +29,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #FFFFFF;
-  background: #fff;
-  color: #ffd600;
+  border: 1px solid #fa3b28;
+  background: transparent;
+  color: #fa3b28;
   font-family: inherit;
   outline: none;
   cursor: pointer;
