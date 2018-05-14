@@ -16,6 +16,6 @@ router.get('/cats', getCats);
 router.get('/sub-cats', getSubCats);
 router.get('/orgs-sub-cats', getOrgsSubCats);
 
-router.post('/submit-org',inputsValidator, postOrg);
+router.post('/submit-org', inputsValidator, postOrg);
 
 module.exports = router;

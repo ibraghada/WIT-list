@@ -25,11 +25,14 @@ class OrgCard extends Component {
             <p>
               {
                 orgSubCats.map(
-                  subCat => {
-                    return `${subCat.title}, `;
+                  (subCat, index) => {
+                    return index < 4 ?
+                      `${subCat.title}, `
+                      :
+                      null;
                   }
                 ).join('').slice(0, -2)
-              }
+              }...
             </p>
           </div>
           <a href={website} target='_blank' rel='noopener noreferrer'>WEBSITE</a>

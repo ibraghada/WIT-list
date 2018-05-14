@@ -3,7 +3,6 @@ const insertSubCats = require('../database/queries/insertSubCats');
 
 module.exports = (req, res, next) => {
   const { orgDetails } = req.body;
-
   insertOrg(orgDetails, (insertOrgErr, orgData) => {
     if (insertOrgErr) {
       return next(insertOrgErr);

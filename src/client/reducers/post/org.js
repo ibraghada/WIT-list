@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   isPosting: false,
-  response: {},
+  response: false,
   failedKeys: [],
   error: {}
 };

@@ -28,7 +28,8 @@ export default (state = initialState, { type, payload }) => {
     case DROP_ALL_FILTERS:
       return {
         ...state,
-        filters: payload
+        filters: [],
+        orgs: []
       };
     case FILTER_ACTION:
       return {

@@ -5,3 +5,25 @@
   margin-bottom: 45px;
   flex-wrap: wrap;
 }
+
+.orgCards__error-div {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.orgCards__error-img {
+  background-image: url(/assets/imgs/cat.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 150px;
+  min-height: 150px;
+}
+
+.orgCards__error-div h2 {
+  font-size: 1em;
+  color: #fa6050;
+}

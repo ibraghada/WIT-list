@@ -7,3 +7,7 @@ body {
 .red-border {
   border: 3px solid red;
 }
+
+html, body, section, div, form, a, button, input, textarea, label, img {
+  outline: none;
+}
