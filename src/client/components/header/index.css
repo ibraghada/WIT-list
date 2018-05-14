@@ -19,12 +19,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
-.header__navbar__submit button{
+.header__navbar__submit button {
   height: 40px;
   max-width: 40vw;
-  margin: 14px 15px 14px 0;
+  margin: 14px 15px 0 0;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -35,6 +36,18 @@
   font-family: inherit;
   outline: none;
   cursor: pointer;
+}
+
+.header__navbar__submit button:hover {
+  border: 1px solid #fa3b28;
+  background: #fa3b28;
+  color: #ffd600;
+  font-weight: bold;
+}
+
+.header__navbar__submit button a {
+  width: 100%;
+  height: 100%
 }
 
 .header__container{

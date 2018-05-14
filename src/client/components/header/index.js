@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import typeWriter from '../../helpers/typeWriter';
 
@@ -32,9 +32,13 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='header__navbar'>
-          <Link to={'/'}><div className='header__navbar__logo'></div></Link>
+          <div className='header__navbar__logo'
+            onClick={() => this.props.history.push('/')}></div>
           <div className='header__navbar__submit'>
-            <Link to={'/submit-org'}><button type='button'>Submit Your Organization</button></Link>
+            <button type='button'
+              onClick={() => this.props.history.push('/submit-org')}>
+              Submit Your Organization
+            </button>
           </div>
         </div>
         <div className='header__container'>
@@ -72,6 +76,8 @@ Header.propTypes = {
   orgsSubCats: PropTypes.array,
   orgs: PropTypes.array,
   filters: PropTypes.array,
+  history: PropTypes.object,
+  push: PropTypes.func,
   filter: PropTypes.func
 };
 

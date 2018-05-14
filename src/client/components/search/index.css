@@ -27,6 +27,11 @@
   outline: none;
 }
 
+.search__search-field:hover {
+  background-position: 10px;
+  padding-left: 65px;
+}
+
 .search__filters-controllers {
   width: 835px;
   display: flex;
@@ -89,7 +94,9 @@
 }
 
 .search__icon-btn:hover {
-  color: rgb(230, 230, 230)
+  border-bottom: 3px solid #ffd600;
+  box-sizing: border-box;
+  line-height: 50px;
 }
 
 .search__filters {
