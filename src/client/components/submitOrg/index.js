@@ -140,7 +140,7 @@ class SubmitOrg extends Component {
       type, audience, funding, theme, operating, country,
       orgTypes, orgAudience, orgFunding, orgThemes, reSubmitRequired
     } = this.state;
-    const { subCats, isPostingOrg, response } = this.props;
+    const { subCats, isPostingOrg, response, history } = this.props;
 
     if (subCats.length !== 0) {
       subCats.forEach(subCat => {
@@ -176,7 +176,8 @@ class SubmitOrg extends Component {
           ?
           (
             <div className='submitOrg__error-div'>
-              <Link to={'/'}><div className='submitOrg__logo'></div></Link>
+              <div className='submitOrg__logo'
+                onClick={() => this.props.history.push('/')}></div>
               <div className='submitOrg__error-img'></div>
               <h2>Woohoo! Your Request Was Sent Successfuly! :)</h2>
             </div>
@@ -321,6 +322,8 @@ SubmitOrg.propTypes = {
   subCats: PropTypes.array,
   isPostingOrg: PropTypes.bool,
   response: PropTypes.bool,
+  history: PropTypes.object,
+  push: PropTypes.func,
   failedKeys: PropTypes.array
 };
 

@@ -16,7 +16,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { orgsSubCats, isFetchingOrgs, orgs } = this.props;
+    const { orgsSubCats, isFetchingOrgs, orgs, history } = this.props;
     return (
       <div>
         {isFetchingOrgs ?
@@ -28,7 +28,7 @@ class HomePage extends Component {
           :
           (
             <div>
-              <Header />
+              <Header history={history} />
               <Search />
               <OrgCards orgs={orgs} orgsSubCats={orgsSubCats}/>
               <Footer />
@@ -44,6 +44,7 @@ HomePage.propTypes = {
   getOrgsSubCats: PropTypes.func,
   orgsSubCats: PropTypes.array,
   isFetchingOrgs: PropTypes.bool,
+  history: PropTypes.object,
   orgs: PropTypes.array
 };
 

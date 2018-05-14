@@ -55,7 +55,8 @@
 .OrgCard__visible h2 {
   color: rgba(251, 98, 83, 0.8);
   text-align: center;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .OrgCard__visible p {
