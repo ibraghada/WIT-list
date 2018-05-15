@@ -31,9 +31,11 @@ export const filter = (orgSubCats, orgs, filterValue) => (dispatch, getState) =>
   let newFilters = [];
 
   if (!filterValue) {
+
     dispatch(dropAllFilter());
   } else if (filters.length === 0) {
     newFilters.push(filterValue);
+
     dispatch(addFilter(newFilters));
   } else if (filters.includes(filterValue)) {
     filters.map(
@@ -44,10 +46,12 @@ export const filter = (orgSubCats, orgs, filterValue) => (dispatch, getState) =>
           newFilters.push(_filter);
       }
     );
+
     dispatch(dropFilter(newFilters));
   } else {
     newFilters = filters;
     newFilters.push(filterValue);
+
     dispatch(addFilter(newFilters));
   }
 

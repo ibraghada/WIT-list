@@ -8,11 +8,14 @@ const insertOrgTest = () => {
     insertSubCats(orgId, subCats, (err, res) => {
       if (err) {
         t.fail();
+
         return t.end();
       }
-      t.equal(res.rowCount, 5, 'rowCount Should Equal [5]');
-      t.deepEqual(res.command, 'INSERT', 'Command Should Return As [INSERT]');
-      t.end();
+
+      t.equal(res.rowCount, 5, 'Test Should Return With Row Count Equal [5]');
+      t.deepEqual(res.command, 'INSERT', 'Test Should Return With Command As [INSERT]');
+
+      return t.end();
     });
   });
 };

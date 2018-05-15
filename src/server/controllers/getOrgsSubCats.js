@@ -5,6 +5,7 @@ module.exports = (req, res, next) => {
     if (err) {
       return next(err);
     }
+
     return res.send({ orgsSubCats: orgsSubCats.rows });
   });
 };

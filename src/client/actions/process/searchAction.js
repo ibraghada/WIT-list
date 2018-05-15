@@ -16,6 +16,7 @@ const searchFailed = () => ({
 
 export const search = (orgs, searchWord) => dispatch => {
   const filteredOrgs = searchHelper(orgs, searchWord);
+
   filteredOrgs.length > 0
     ?
     dispatch(searchAction(filteredOrgs))

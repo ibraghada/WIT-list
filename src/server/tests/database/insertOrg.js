@@ -26,11 +26,14 @@ const insertOrgTest = () => {
     insertOrg(validOrgDetails, (err, res) => {
       if (err) {
         t.fail();
+
         return t.end();
       }
-      t.equal(res.rowCount, 1, 'rowCount Should Equal [1]');
-      t.deepEqual(res.command, 'INSERT', 'Command Should Return As [INSERT]');
-      t.end();
+
+      t.equal(res.rowCount, 1, 'Test Should Return With Row Count Equal [1]');
+      t.deepEqual(res.command, 'INSERT', 'Test Should Return With Command As [INSERT]');
+
+      return t.end();
     });
   });
 
@@ -40,9 +43,12 @@ const insertOrgTest = () => {
         t.equal(err.name, 'error', 'Test Should Return With ERROR');
         t.equal(err.table, 'orgs', 'Test Should Return With Table Name: orgs');
         t.equal(err.column, 'name', 'Test Should Return With Failing Column Name: name');
+
         return t.end();
       }
+
       t.fail();
+
       return t.end();
     });
   });

@@ -40,15 +40,16 @@ const postOrg = () => {
       .expect(200)
       .end((err, res) => {
         if (err) {
-          console.log(err);
           t.fail();
-          t.end();
-        }
-        t.equal(res.statusCode, 200, 'statusCode should equal 200');
-        t.equal(res.type, 'application/json', 'should return res.type application/json');
-        t.equal(res.body.inserted, true, 'Should return res.inserted = true');
 
-        t.end();
+          return t.end();
+        }
+
+        t.equal(res.statusCode, 200, 'Test Should Return With Statue Code Equal [200]');
+        t.equal(res.type, 'application/json', 'Test Should Return With Res Type of [application/json]');
+        t.equal(res.body.inserted, true, 'Test Should Return With Inserted As [Boolean: true]');
+
+        return t.end();
       });
   });
 
@@ -60,13 +61,17 @@ const postOrg = () => {
       .end((err, res) => {
         if (err) {
           t.fail();
-          t.end();
-        }
-        t.equal(res.statusCode, 200, 'statusCode should equal 200');
-        t.equal(res.body.inserted, false, 'req.body.inserted Status should be: False');
 
-        t.end();
+          return t.end();
+        }
+
+        t.equal(res.statusCode, 200, 'Test Should Return With Statue Code Equal [200]');
+        t.equal(res.type, 'application/json', 'Test Should Return With Res Type of [application/json]');
+        t.equal(res.body.inserted, false, 'Test Should Return With Inserted As [Boolean: false]');
+
+        return t.end();
       });
   });
 };
+
 module.exports = postOrg;

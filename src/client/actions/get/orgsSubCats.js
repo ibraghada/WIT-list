@@ -28,11 +28,13 @@ export const getOrgsSubCats = () => dispatch => {
         if (response >= 400) {
           return new Error('Error Fetching Organizations Sub Categories');
         }
-        const orgsSubCats = response.data.orgsSubCats;
-        dispatch(getOrgsSubCatsSuccess(orgsSubCats));
 
+        const orgsSubCats = response.data.orgsSubCats;
+
+        return dispatch(getOrgsSubCatsSuccess(orgsSubCats));
       }
-    ).catch(error => {
+    )
+    .catch(error => {
       return dispatch(getOrgsSubCatsFailure(error));
     });
 };

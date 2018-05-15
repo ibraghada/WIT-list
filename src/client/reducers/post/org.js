@@ -19,6 +19,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         isPosting: true
       };
+
     case POST_ORG_SUCCESS:
       return {
         ...state,
@@ -26,6 +27,7 @@ export default (state = initialState, { type, payload }) => {
         error: {},
         response: payload
       };
+
     case POST_ORG_BAD:
       return {
         ...state,
@@ -33,12 +35,14 @@ export default (state = initialState, { type, payload }) => {
         error: {},
         failedKeys: payload
       };
+
     case POST_ORG_FAILURE:
       return {
         ...state,
         isPosting: false,
         error: payload
       };
+
     default:
       return state;
   }
