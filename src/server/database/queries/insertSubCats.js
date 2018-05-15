@@ -6,11 +6,13 @@ const insertSubCats = (orgId, subCats, cb) => {
     values: [orgId]
   };
   let colsCount = 1;
+
   newCols.text += subCats.map(subCatId => {
     newCols.values.push(subCatId);
     return `($1, $${++colsCount})`;
   });
-  dbConnection.query(newCols, cb);
+
+  return dbConnection.query(newCols, cb);
 };
 
 module.exports = insertSubCats;

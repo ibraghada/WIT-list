@@ -20,34 +20,40 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         filters: payload
       };
+
     case DROP_FILTER:
       return {
         ...state,
         filters: payload
       };
+
     case DROP_ALL_FILTERS:
       return {
         ...state,
         filters: [],
         orgs: []
       };
+
     case FILTER_ACTION:
       return {
         ...state,
         orgs: payload
       };
+
     case SEARCH_ACTION:
       return {
         ...state,
         orgs: payload,
         searchFailed: false
       };
+
     case SEARCH_FAILED:
       return {
         ...state,
         orgs: [],
         searchFailed: true
       };
+
     default:
       return state;
   }

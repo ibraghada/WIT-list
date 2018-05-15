@@ -28,11 +28,13 @@ export const getSubCats = () => dispatch => {
         if (response >= 400) {
           return new Error('Error Fetching Sub Categories');
         }
-        const { subCats } = response.data;
-        dispatch(getSubCatsSuccess(subCats));
 
+        const { subCats } = response.data;
+
+        return dispatch(getSubCatsSuccess(subCats));
       }
-    ).catch(error => {
+    )
+    .catch(error => {
       return dispatch(getSubCatsFailure(error));
     });
 };

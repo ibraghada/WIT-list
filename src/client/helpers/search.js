@@ -1,6 +1,7 @@
 export default (orgs, searchWord) => {
   const filteredOrgs = [];
   const searchValue = searchWord.toLowerCase();
+
   orgs.map(org => {
     (org.name.toLowerCase().includes(searchValue))
     ||
@@ -12,5 +13,6 @@ export default (orgs, searchWord) => {
       :
       null;
   });
+
   return filteredOrgs;
 };

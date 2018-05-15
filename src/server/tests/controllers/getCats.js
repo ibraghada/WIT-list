@@ -10,13 +10,15 @@ const getCatsTest = () => {
       .end((err, res) => {
         if (err) {
           t.fail();
+
           return t.end();
         }
-        t.equal(res.statusCode, 200, 'statusCode should equal 200');
-        t.equal(res.type, 'application/json', 'should return res.type application/json');
-        t.equal(res.body.cats.length, 4, 'should return res.cats.length of 4');
-        t.equal(res.body.cats[0].title, 'Org. Type', 'First Cat Title Shoud Be: Org. Type');
-        t.equal(res.body.cats[3].title, 'Theme', 'First Cat Title Shoud Be: Theme');
+
+        t.equal(res.statusCode, 200, 'Test Should Return With Status Code Equal [200]');
+        t.equal(res.type, 'application/json', 'Test Should Return With Res Type of [application/json]');
+        t.equal(res.body.cats.length, 4, 'Test Should Return With Cats Array of Length [4]');
+        t.equal(res.body.cats[0].title, 'Org. Type', 'Test Should Return With First Cat Title As [Org. Type]');
+        t.equal(res.body.cats[3].title, 'Theme', 'Test Should Return With Last Cat Title As [Theme]');
 
         return t.end();
       });

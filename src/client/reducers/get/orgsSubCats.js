@@ -17,6 +17,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         isFetching: true
       };
+
     case GET_ORGS_SUB_CATS_SUCCESS:
       return {
         ...state,
@@ -24,12 +25,14 @@ export default (state = initialState, { type, payload }) => {
         error: {},
         orgsSubCats: payload
       };
+
     case GET_ORGS_SUB_CATS_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: payload
       };
+
     default:
       return state;
   }

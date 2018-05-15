@@ -1,5 +1,3 @@
-
-
 // Controllers Tests:
 
 // GET Tests:
@@ -13,14 +11,12 @@ require('./controllers/postOrg')();
 
 // Database Queries Tests:
 
-// get tests (DB)
+// SELECT Tests (DB)
 require('./database/selectCats')();
 require('./database/selectSubCats')();
 require('./database/selectOrgs')();
 require('./database/selectOrgsSubCats')();
 
-
-// Insert Tests:
+// INSERT Tests:
 require('./database/insertOrg')();
 require('./database/insertSubCats')();
-

@@ -5,7 +5,8 @@ const selectCats = cb => {
     text:
     'SELECT * FROM cats'
   };
-  dbConnection.query(query, cb);
+
+  return dbConnection.query(query, cb);
 };
 
 module.exports = selectCats;

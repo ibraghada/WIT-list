@@ -1,5 +1,6 @@
 export default inputsObj => {
   const failedKeys = [];
+
   Object.keys(inputsObj).map(key => {
     !inputsObj[key] && key !== 'comments' && key !== 'funding' ? failedKeys.push(key) : null;
     if (key === 'website' && inputsObj[key]) {
@@ -10,5 +11,6 @@ export default inputsObj => {
       }
     }
   });
+
   return failedKeys;
 };

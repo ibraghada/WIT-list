@@ -5,7 +5,8 @@ const selectOrgs = cb => {
     text:
     'SELECT * FROM orgs WHERE accepted=true'
   };
-  dbConnection.query(query, cb);
+
+  return dbConnection.query(query, cb);
 };
 
 module.exports = selectOrgs;

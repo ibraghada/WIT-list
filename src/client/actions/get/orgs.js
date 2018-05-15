@@ -28,11 +28,13 @@ export const getOrgs = () => dispatch => {
         if (response >= 400) {
           return new Error('Error Fetching Organizations');
         }
-        const orgs = response.data.orgs;
-        dispatch(getOrgsSuccess(orgs));
 
+        const orgs = response.data.orgs;
+
+        return dispatch(getOrgsSuccess(orgs));
       }
-    ).catch(error => {
+    )
+    .catch(error => {
       return dispatch(getOrgsFailure(error));
     });
 };

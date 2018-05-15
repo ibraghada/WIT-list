@@ -5,7 +5,8 @@ const selectSubCats = cb => {
     text:
     'SELECT * FROM sub_cats'
   };
-  dbConnection.query(query, cb);
+
+  return dbConnection.query(query, cb);
 };
 
 module.exports = selectSubCats;

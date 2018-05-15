@@ -1,5 +1,6 @@
 export default (orgSubCats, orgs, filters) => {
   const filteredOrgs = [];
+
   orgSubCats.map(orgSubCat => {
     filters.map(filter => {
       if (orgSubCat.sub_cat_id === filter) {
@@ -13,5 +14,6 @@ export default (orgSubCats, orgs, filters) => {
       }
     });
   });
+
   return filteredOrgs;
 };

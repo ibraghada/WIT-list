@@ -28,11 +28,13 @@ export const getCats = () => dispatch => {
         if (response >= 400) {
           return new Error('Error Fetching Categories');
         }
-        const cats = response.data.cats;
-        dispatch(getCatsSuccess(cats));
 
+        const cats = response.data.cats;
+
+        return dispatch(getCatsSuccess(cats));
       }
-    ).catch(error => {
+    )
+    .catch(error => {
       return dispatch(getCatsFailure(error));
     });
 };

@@ -37,9 +37,9 @@ export const postOrg = orgDetails => dispatch => {
           dispatch(postOrgBad(failedKeys))
           :
           dispatch(postOrgSuccess(inserted));
-
       }
-    ).catch(error => {
+    )
+    .catch(error => {
       return dispatch(postOrgFailure(error));
     });
 };
