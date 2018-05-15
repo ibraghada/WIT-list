@@ -183,6 +183,17 @@
     text-overflow: ellipsis;
   }
 
+  .search__icon-btn:hover {
+    line-height: 36px;
+  }
+
+  .search__info-msg {
+    padding-left: 0;
+    font-size: 12px;
+    font-weight: bold;
+    top: -105px;
+  }
+
   .search__filters-controllers, .search__filters {
     width: 270px;
   }
