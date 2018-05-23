@@ -1,7 +1,10 @@
 # WIT-list
 
 ## WHAT:
-[WIT List] Women In Tech List, is an application that allows women to look-up and find women supporting organizations that match's their needs.
+An online inclusive directory of all women in technology resources (organizations, lists, conferences, meetups). Aiming
+in that at highlighting the role of underrepresented groups of women in technology, making them searchable,reachable and increasing their visibility.
+
+-----
 
 ## Getting Started:
 1. You can navigate to: [Heroku live link](https://witlist.herokuapp.com/)
@@ -45,7 +48,7 @@ $ npm run start
 
 8. Navigate to: [Localhost](http://localhost:8000)
 
--------
+-----
 
 ## API Routes:
 1. `GET /organizations`
