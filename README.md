@@ -1,7 +1,7 @@
 # WIT-list
 
 ## WHAT:
-[WIT List] Women In Tech List, is an application that allows women to look-up and find women supporting organizations that match's there needs.
+[WIT List] Women In Tech List, is an application that allows women to look-up and find women supporting organizations that match's their needs.
 
 ## Getting Started:
 1. You can navigate to: [Heroku live link](https://witlist.herokuapp.com/)
