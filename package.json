@@ -4,15 +4,16 @@
   "description": "Makaani +",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-serve --open",
+    "start": "cross-env NODE_ENV=production webpack-serve --open",
     "build": "cross-env NODE_ENV=production webpack",
     "format": "prettier --write 'packages/**/*.js'",
     "test": "jest --watchAll --coverage",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.{js,jsx}": [
       "prettier --write --single-quote",
+      "eslint --fix",
       "git add"
     ]
   },
@@ -35,7 +36,8 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-hot-loader": "4.3.4",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "cross-env": "5.2.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
@@ -64,7 +66,6 @@
     "babel-plugin-lodash": "3.3.4",
     "browserslist": "4.0.1",
     "clean-webpack-plugin": "0.1.19",
-    "cross-env": "5.2.0",
     "css-loader": "1.0.0",
     "eslint": "5.3.0",
     "eslint-config-airbnb": "17.0.0",
