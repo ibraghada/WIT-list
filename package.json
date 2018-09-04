@@ -11,9 +11,8 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js}": [
       "prettier --write --single-quote",
-      "eslint --fix",
       "git add"
     ]
   },
@@ -35,7 +34,8 @@
     "prop-types": "15.6.2",
     "react": "16.4.2",
     "react-dom": "16.4.2",
-    "react-hot-loader": "4.3.4"
+    "react-hot-loader": "4.3.4",
+    "react-router-dom": "^4.3.1"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

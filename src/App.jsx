@@ -1,15 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
-import HelloWorld from './components/hello-world';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LoginContainer from './components/Login/index.jsx';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+class App extends React.Component {
+  state = {};
 
   render() {
-    return <HelloWorld title="Hello from React webpack" />;
+    return (
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" component={LoginContainer} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
   }
 }
 

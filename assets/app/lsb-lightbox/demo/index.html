@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightSpeedBox lightbox jQuery plugin</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../src/lsb.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="../src/lsb.js"></script>
+  <script>
+    $(window).load(function() {
+      $.fn.lightspeedBox();
+    });
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>LightSpeedBox</h1>
+    <h2>Lightbox plugin for jQuery</h2>
+    <div class="show-reel">
+      <a href="img/summer_days.jpg" class="lsb-preview" data-lsb-group="header">
+        <img src="img/summer_days_prev.jpg" alt="Summer days">
+      </a>
+      <a href="img/lucy_wilde.jpg" class="lsb-preview" data-lsb-group="header">
+        <img src="img/lucy_wilde_prev.jpg" alt="Lucy Wilde from &quot;Despicable Me 2&quot;">
+      </a>
+      <a href="img/6_children_game_concepts.jpg" class="lsb-preview" data-lsb-group="header">
+        <img src="img/6_children_game_concepts_prev.jpg" alt="Children Game Concept">
+      </a>
+      <a href="img/tiny_vacation.jpg" class="lsb-preview" data-lsb-group="header">
+        <img src="img/tiny_vacation_prev.jpg" alt="Tiny Vacation">
+      </a>
+    </div>
+  </header>
+</body>
+
+</html>
