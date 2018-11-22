@@ -8,31 +8,28 @@ import Footer from '../footer';
 import 'react-select/dist/react-select.css';
 import './index.css';
 
-import countries from '../../helpers/countries';
+import { countries } from '../../helpers/countries';
 import inputsValidator from '../../helpers/inputsValidator';
 
 class SubmitOrg extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      website: '',
-      description: '',
-      operating: '',
-      country: '',
-      city: '',
-      type: '',
-      audience: '',
-      funding: '',
-      theme: '',
-      comments: '',
-      reSubmitRequired: {},
-      orgTypes: [],
-      orgAudience: [],
-      orgFunding: [],
-      orgThemes: []
-    };
-  }
+  state = {
+    name: '',
+    website: '',
+    description: '',
+    operating: '',
+    country: '',
+    city: '',
+    type: '',
+    audience: '',
+    funding: '',
+    theme: '',
+    comments: '',
+    reSubmitRequired: {},
+    orgTypes: [],
+    orgAudience: [],
+    orgFunding: [],
+    orgThemes: []
+  };
 
   handleInputChange = event => {
     const field = event.target;
@@ -74,10 +71,11 @@ class SubmitOrg extends Component {
     );
   }
 
-  handleCountryChange = country => {
+  handleSelectChange = e => {
+    const { name, value } = e.target;
     this.setState(
       { ...this.state,
-        country }
+        [name]: value }
     );
   }
 
@@ -169,6 +167,8 @@ class SubmitOrg extends Component {
         }
       });
     }
+
+    const countriesList = Object.keys(countries);
 
     return (
       <div>
@@ -264,25 +264,52 @@ class SubmitOrg extends Component {
                       onChange={this.handleOperatingChange}
                       options={[
                         { value: 'Internationally', label: 'Internationally' },
-                        { value: 'Locally', label: 'Locally' }
+                        { value: 'Locally', label: 'Locally' },
+                        { value: 'Regionally', label: 'Regionally' }
                       ]}
                     />
                   </div>
                   <div className='submitOrg__question'>
                     <span>Country</span>
-                    <Select className={!reSubmitRequired.country? 'submitOrg__select':'submitOrg__select submitOrg__error'}
+                    <select
                       name='country'
-                      simpleValue
-                      value={country}
-                      onChange={this.handleCountryChange}
-                      options={countries}
-                    />
+                      id='countries-list'
+                      onChange={e => this.handleSelectChange(e)}
+                      className={`form-control m-input ${!reSubmitRequired.operating ? 'submitOrg__select' : 'submitOrg__select submitOrg__error'}`}
+                    >
+                      {countriesList.map((country, index) => {
+                        return (
+                          <option
+                            key={`country#${index + 1}`}
+                            value={country}>
+                            {country}
+                          </option>
+                        );
+                      })}
+                    </select>
                   </div>
                   <div className='submitOrg__question'>
                     <span>City</span>
-                    <input className={!reSubmitRequired.city? 'submitOrg__input':'submitOrg__input submitOrg__error'} type='text'
-                      name='city' onChange={this.handleInputChange}
-                    />
+                    <select
+                      name='city'
+                      onChange={e => this.handleSelectChange(e)}
+                      className={`form-control m-input ${!reSubmitRequired.operating ? 'submitOrg__select' : 'submitOrg__select submitOrg__error'}`}
+                    >
+                      <option value={''}>Select city</option>
+                      {countriesList.map((_country, index) => {
+                        if (_country.toLowerCase() === country.toLowerCase()) {
+                          return countries[_country].map((city, index) => {
+                            return (
+                              <option
+                                key={`city#${index}`}
+                                value={city}>
+                                {city}
+                              </option>
+                            );
+                          });
+                        }
+                      })}
+                    </select>
                   </div>
                   <div className='submitOrg__question'>
                     <span>Additional Comments (Optional)</span>
